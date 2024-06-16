@@ -1,0 +1,28 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import powerbi_client
+
+# Load your course quality dataset (replace with actual data)
+# Assume columns: 'Course', 'Completion_Rate', 'NPS', 'Recommendations'
+
+# EDA and data cleaning (similar to what you did in Task 1)
+# ...
+
+# Create insightful visualizations
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=df, x='Completion_Rate', y='NPS', hue='Course', size='Recommendations')
+plt.title('Course Quality Analysis')
+plt.xlabel('Completion Rate')
+plt.ylabel('Net Promoter Score (NPS)')
+plt.legend(title='Course')
+plt.grid(True)
+plt.show()
+
+# Provide data-driven recommendations
+top_courses_to_improve = df[df['Completion_Rate'] < 0.8]['Course']
+print(f"Recommendations for improvement: {', '.join(top_courses_to_improve)}")
+
+# Publish your report to Power BI service and create an app
+# ...
+
