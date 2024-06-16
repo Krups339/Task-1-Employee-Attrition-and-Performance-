@@ -1,0 +1,36 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+# Load your life expectancy dataset (replace with actual data)
+# Assume columns: 'GDP', 'Health_Expenditure', 'Population', 'Life_Expectancy'
+
+# EDA and data cleaning (similar to what you did in Task 1)
+# ...
+
+# Feature selection (choose relevant features)
+selected_features = ['GDP', 'Health_Expenditure', 'Population']
+
+# Split data into train and test sets
+X_train, X_test, y_train, y_test = train_test_split(df[selected_features], df['Life_Expectancy'], test_size=0.2, random_state=42)
+
+# Initialize and train the linear regression model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate model performance
+mse = mean_squared_error(y_test, y_pred)
+print(f"Mean Squared Error: {mse:.2f}")
+
+# Visualize results (scatter plot, regression line, etc.)
+# ...
+
+# Interpret coefficients and draw conclusions
+# ...
