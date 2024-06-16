@@ -1,0 +1,16 @@
+# Example product data
+products = {
+    'toothpaste': 5.99,
+    'toothbrush': 2.49,
+    'mouthwash': 3.99
+}
+
+# Define a bundle
+def create_bundle(product_names):
+    total_price = sum(products[product] for product in product_names)
+    return total_price
+
+# Example usage
+bundle_items = ['toothpaste', 'toothbrush']
+bundle_price = create_bundle(bundle_items)
+print(f"Bundle price for {', '.join(bundle_items)}: ${bundle_price:.2f}")
