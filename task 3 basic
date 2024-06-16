@@ -1,0 +1,30 @@
+import pandas as pd
+
+# Load your store sales data (replace 'your_data.csv' with your actual file)
+sales_data = pd.read_csv('your_data.csv', parse_dates=['Date'], index_col='Date')
+
+# Explore the data
+print(sales_data.head())
+
+from statsmodels.tsa.seasonal import seasonal_decompose
+import matplotlib.pyplot as plt
+
+# Decompose the sales data into trend, seasonal, and residual components
+decomposition = seasonal_decompose(sales_data['Sales'], model='additive')
+decomposition.plot()
+plt.show()
+
+from statsmodels.tsa.arima_model import ARIMA
+
+# Fit an ARIMA model (example: ARIMA(1,1,1))
+model = ARIMA(sales_data['Sales'], order=(1, 1, 1))
+model_fit = model.fit()
+
+# Get predictions (adjust the forecast horizon as needed)
+forecast_steps = 7
+forecast, stderr, conf_int = model_fit.forecast(steps=forecast_steps)
+
+# Print the forecasted sales
+print("Forecasted Sales:")
+print(forecast)
+
